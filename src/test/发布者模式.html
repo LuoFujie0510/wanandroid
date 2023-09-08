@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>发布者模式</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    
+    <div>发布者模式</div>
+    <script>
+        class Subject{
+            
+            constructor(){
+                this.observers = [];
+            }
+            add(observer){
+                this.observers.push(observer)
+            }
+            remove(observer){
+                let idx = this.observers.findIndex( item => { item === observer})
+                idx > -1 && this.observers.splice(idx, 1)
+            }
+
+            notify(){
+                this.observers.forEach( item => {
+                    console.log(`通知了${item}`)
+                }) 
+            }
+        }
+
+        class Observer{
+            constructor(){}
+            update(){
+
+            }
+        }
+
+        let subject = new Subject();
+        let observer1 = new Observer();
+        let observer2 = new Observer();
+
+        subject.add(observer1)
+        subject.add(observer2)
+
+        subject.notify()
+    </script>
+</body>
+</html>

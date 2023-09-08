@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>两个数相加</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      var lengthOfLongestSubstring = function (s) {
+        if (s.length === 1) {
+          return 1
+        }
+        let result = 0
+        let left = 0
+        while (left < s.length) {
+          const sVal = s.charAt(left)
+          for (let right = left + 1; right < s.length; right++) {
+            const rVal = s.charAt(right)
+            if (sVal === rVal) {
+              result = Math.max(result, right-left)
+              break
+            }
+          }
+          left++
+        }
+        return result
+      }
+
+      console.log(lengthOfLongestSubstring('abcabcabc'))
+    </script>
+  </body>
+</html>
