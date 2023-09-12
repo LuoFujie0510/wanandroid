@@ -51,6 +51,7 @@ const qryList = async () => {
 //跳转详情页
 const toDetail = (url: string) => {
   console.log('test', url)
+  window.open(url)
 }
 </script>
 <style scoped>

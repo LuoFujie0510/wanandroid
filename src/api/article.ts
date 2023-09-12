@@ -1,4 +1,5 @@
 import myAxios from "@/axios/myAxios";
+import { type ApiRes } from "./response";
 
 export interface Article {
     adminAdd: boolean,
@@ -38,7 +39,7 @@ export interface Article {
     visible: number,
     zan: number
 }
-export function getArticle(page: number) {
+export function getArticle(page: number): Promise<ApiRes> {
     const url = `/api/article/list/${page}/json`;
     return myAxios.get(url);
 }

@@ -19,7 +19,7 @@ export interface Collect {
     zan: number
 }
 
-export function qryMyCollect(page: number){
+export function qryMyCollect(page: number): Promise<ApiRes> {
     return myAxios.get(`/api/lg/collect/list/${page}/json`)
 }
 /**
@@ -28,21 +28,21 @@ export function qryMyCollect(page: number){
  * @param originId 文章列表id
  * @returns promise
  */
-export function unCollect(id: number, originId: number){
-    return myAxios.post<ApiRes>(`/api/lg/uncollect/${id}/json`, `originId=${originId}`)
+export function unCollect(id: number, originId: number): Promise<ApiRes> {
+    return myAxios.post(`/api/lg/uncollect/${id}/json`, `originId=${originId}`)
 }
 /**
  * 取消收藏-首页
  * @param id 文章id
  */
-export function unCollectOriginId(id: number){
-    return myAxios.post<ApiRes>(`/api/lg/uncollect_originId/${id}/json`)
+export function unCollectOriginId(id: number): Promise<ApiRes> {
+    return myAxios.post(`/api/lg/uncollect_originId/${id}/json`)
 }
 /**
  * 
  * @param id 文章id
  * @returns 
  */
-export function collect(id: number){
-    return myAxios.post<ApiRes>(`/api/lg/collect/${id}/json`)
+export function collect(id: number): Promise<ApiRes> {
+    return myAxios.post(`/api/lg/collect/${id}/json`)
 }

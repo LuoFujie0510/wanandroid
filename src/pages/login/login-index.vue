@@ -12,7 +12,10 @@ const form = reactive({
   name: '18328625472',
   password: '18328625472'
 })
+
 const loading = ref(false)
+
+console.log('Test', form, loading)
 
 const submit = async () => {
   console.log('login', form.name, form.password)
@@ -23,15 +26,14 @@ const submit = async () => {
   loading.value = true
   try {
     let req = `username=${form.name}&password=${form.password}`
-    const res = await userLogin(req)
-
-    console.log('login->login', res)
-    if (res.errorCode !== 0) {
-      Message.error(`${res.errorMsg}`)
+    const response = await userLogin(req)
+    console.log('login->login', response)
+    if (response.errorCode !== 0) {
+      Message.error(`${response.errorMsg}`)
       return
     }
 
-    userStore.setInfo(res.data)
+    userStore.setInfo(response.data)
     Message.success('登录成功')
     router.push({
       path: '/main'

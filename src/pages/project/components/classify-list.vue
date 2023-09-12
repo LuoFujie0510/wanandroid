@@ -10,7 +10,7 @@
         :split="false"
       >
         <template #item="{ item }">
-          <a-card :bordered="false" class="card">
+          <a-card :bordered="false" class="card" @click="toDetail(item.link)">
             <a-list-item class="list-demo-item" action-layout="vertical">
               <template #extra>
                 <div className="image-area">
@@ -58,6 +58,13 @@ async function qrySelf() {
   list.value = list.value.concat(result.data.datas)
 }
 
+//详情
+const toDetail = function (url: string) {
+  if (url) {
+    window.open(url)
+  }
+}
+
 defineExpose({ qryList })
 </script>
 <style scoped>
@@ -65,15 +72,14 @@ defineExpose({ qryList })
   width: 100%;
 }
 .list-demo-action-layout .image-area {
-  width: 183px;
-  height: 119px;
+  width: 70px;
+  height: 115px;
   border-radius: 2px;
   overflow: hidden;
 }
 
 .list-demo-action-layout .list-demo-item {
   padding: 20px 0;
-  border-bottom: 1px solid var(--color-fill-3);
 }
 
 .list-demo-action-layout .image-area img {
@@ -87,5 +93,9 @@ defineExpose({ qryList })
 .list-demo-action-layout .card {
   cursor: pointer;
   margin: 20px 0;
+}
+
+.list-demo-action-layout:nth-child(1) {
+  margin: 0;
 }
 </style>
