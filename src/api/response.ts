@@ -1,4 +1,4 @@
-export interface ApiRes{
+export interface ApiRes {
     data: any
     errorCode: number
     errorMsg: string

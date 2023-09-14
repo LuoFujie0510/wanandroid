@@ -1,0 +1,6 @@
+
+
+function Example(name: string) {
+
+
+}

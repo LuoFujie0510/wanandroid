@@ -2,22 +2,22 @@ import myAxios from "../axios/myAxios";
 import { type ApiRes } from "./response";
 
 export interface MsgObject {
-     category: number,
-     date: number,
-     fromUser: string,
-     fromUserId: number,
-     fullLink: string,
-     id: string,
-     isRead: number,
-     link: string,
-     message: string,
-     niceDate: string,
-     tag: string,
-     title: string,
-     userId: number
+    category: number,
+    date: number,
+    fromUser: string,
+    fromUserId: number,
+    fullLink: string,
+    id: string,
+    isRead: number,
+    link: string,
+    message: string,
+    niceDate: string,
+    tag: string,
+    title: string,
+    userId: number
 }
 
-export function qryIntegrate() {
+export function qryIntegrate(): Promise<ApiRes> {
 
     return myAxios.get('/api/lg/coin/userinfo/json')
 }
@@ -25,20 +25,20 @@ export function qryIntegrate() {
  * 查询用户信息
  * @returns 
  */
-export function qryUserInfo() {
-    return myAxios.get<ApiRes>('/api/user/lg/userinfo/json')
+export function qryUserInfo(): Promise<ApiRes> {
+    return myAxios.get('/api/user/lg/userinfo/json')
 }
 /**
  * 查询个人积分
  * @returns 
  */
-export function qryCoinCount() {
+export function qryCoinCount(): Promise<ApiRes> {
     return myAxios.get('/api/lg/coin/userinfo/json')
 }
 /**
  * 查询未读消息数量
  */
-export function qryUnReadCount() {
+export function qryUnReadCount(): Promise<ApiRes> {
     return myAxios.get('/api/message/lg/count_unread/json')
 }
 /**
@@ -46,6 +46,6 @@ export function qryUnReadCount() {
  * @param page 页码
  * @returns 
  */
-export function qryReadMessage(page: number) {
+export function qryReadMessage(page: number): Promise<ApiRes> {
     return myAxios.get(`/api/message/lg/readed_list/${page}/json`)
 }

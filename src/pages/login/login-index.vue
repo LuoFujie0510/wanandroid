@@ -86,11 +86,6 @@ const submit = async () => {
 
 h1 {
   text-align: center;
-  animation: 1.8s text-blink-effect infinite alternate;
-  font:
-    180%/1.5 Baskerville,
-    Palatino,
-    serif;
 }
 .content {
   margin: 20px auto;
